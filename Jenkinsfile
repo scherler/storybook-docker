@@ -1,3 +1,4 @@
+dockerbookImage=""
 node {
     deleteDir()
     sh 'mkdir dockerbook'
@@ -10,5 +11,8 @@ node {
     stage('Run and and smoke test') {
         // Build Docker image
         echo 'Test whether you can start it'
+        docker.image('storybook-docker').withRun() {
+            sh 'echo "argh"'
+        }
     }
 }
