@@ -12,7 +12,7 @@ node {
         // Build Docker image
         echo 'Test whether you can start it'
         docker.image('storybook-docker').withRun() {
-            def ret = sh './smoke.sh'
+            def ret = sh '/dockerbook/smoke.sh'
         }
     }
     stage('end') {
