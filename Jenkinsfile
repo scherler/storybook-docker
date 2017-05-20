@@ -12,13 +12,7 @@ node {
         // Build Docker image
         echo 'Test whether you can start it'
         docker.image('storybook-docker').withRun() {
-            def ret = sh 'eval $( echo z=`curl -I http://localhost:9009 | grep HTTP > line; cat line| cut -d' ' -f2` )
-              if [[ "$z" -eq 200 ]]; then
-                echo 'Everything fine'
-              else
-                exit 1
-              fi
-            '
+            def ret = sh './smoke.sh'
         }
     }
     stage('end') {
